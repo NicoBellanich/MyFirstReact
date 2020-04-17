@@ -8,25 +8,21 @@ function Hola(props){
 
 class Chau extends Component {
   render(){
-
-    const textoSegunBool= this.props.buleano ? 'EsTrue' : 'EsFalse'
-    const mapednumbrers = this.props.arrayOfNumbers.map( n => n*2)
+    // esto es para  que cada vez que se use nos e tenga q poner this.props
+    const {title, number , buleano, multiplicacion , arrayOfNumbers, arrayOfObjects} = this.props 
+    const textoSegunBool= buleano ? 'EsTrue' : 'EsFalse'
+    // const mapednumbrers = this.props.arrayOfNumbers.map( n => n*2) Esta forma se puede reemplazar por la de abajo pero como extra, se tiene que definir multiplicacion como prop adentro de la etiqueta chau
+    const mapednumbrers = arrayOfNumbers.map(multiplicacion)
     return (
     <div>
-      <p>{ this.props.title }</p>
-      <p>{this.props.number}</p>
-      <p>aca deberia mostrar el booleano pero la expresion no se renderiza:</p>
-      <p>{this.props.buleano}</p>
-      <p>aca solamente pasa a string el boleano para que se renderize:</p>
-      <p>{JSON.stringify(this.props.buleano)}</p> 
-      <p>aca muestra el texto segun si props es falso o true:</p>
-      <p>{textoSegunBool}</p>  
-      <p>aca muestra el array de props:</p>
-      <p>{this.props.arrayOfNumbers.join(', ')}</p>
-      <p>aca los multiplica x 2:</p>
-      <p>{mapednumbrers.join(', ')}</p>
-      <p>Aca con objetos</p>
-      <p>{this.props.arrayOfObjects.key}</p>
+      <p>{title }</p>
+      <p>{number}</p>
+      <p>{buleano}</p> {/* aca deberia mostrar el booleano pero la expresion no se renderiza */}
+      <p>{JSON.stringify(buleano)}</p>  {/* aca solamente pasa a string el boleano para que se renderize */}
+      <p>{textoSegunBool}</p>  {/* aca muestra el texto segun si props es falso o true */}
+      <p>{arrayOfNumbers.join(', ')}</p> {/* aca muestra el array de props */}
+      <p>{mapednumbrers.join(', ')}</p> {/* Array multiplicados por 2 */}
+      <p>{arrayOfObjects.key}</p> {/* Array con objetos */}
 
     </div>
     )
@@ -41,12 +37,16 @@ function App() {
         <h2>Bienvenido</h2>
         <Hola title="bizarro"/>
         <p> esto es tiempo real??</p>
+
         <Chau 
         arrayOfNumbers={[2,3,10]}
         arrayOfObjects={{key : 'valor1', key2 : 'valor2'}}
         title="segundo componente" 
+        buleano={true}
         number={3+4} 
-        buleano={true} />
+        multiplicacion= {(number)=> number *100 }
+        />
+
       </header>
     </div>
   );
