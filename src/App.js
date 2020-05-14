@@ -6,12 +6,20 @@ function Hola(props){
   return <h2>{props.title}</h2>
 }
 
-class Chau extends Component {
+class Text extends Component {
   render(){
     // esto es para  que cada vez que se use nos e tenga q poner this.props
-    const {title, number , buleano, multiplicacion , arrayOfNumbers, arrayOfObjects} = this.props 
+    const {
+      title, 
+      number , 
+      buleano, 
+      multiplicacion , 
+      arrayOfNumbers, 
+      arrayOfObjects
+    } = this.props 
+    
     const textoSegunBool= buleano ? 'EsTrue' : 'EsFalse'
-    // const mapednumbrers = this.props.arrayOfNumbers.map( n => n*2) Esta forma se puede reemplazar por la de abajo pero como extra, se tiene que definir multiplicacion como prop adentro de la etiqueta chau
+    // const mapednumbrers = this.props.arrayOfNumbers.map( n => n*2) Esta forma se puede reemplazar por la de abajo pero como extra, se tiene que definir multiplicacion como prop adentro de la etiqueta Text
     const mapednumbrers = arrayOfNumbers.map(multiplicacion)
     return (
     <div>
@@ -38,7 +46,7 @@ function App() {
         <Hola title="bizarro"/>
         <p> esto es tiempo real??</p>
 
-        <Chau 
+        <Text 
         arrayOfNumbers={[2,3,10]}
         arrayOfObjects={{key : 'valor1', key2 : 'valor2'}}
         title="segundo componente" 
