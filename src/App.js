@@ -37,6 +37,36 @@ class Text extends Component {
   }
 }
 
+
+class Contador extends Component {
+  constructor(){
+    super()
+    this.state = {
+      contador: 1
+    }
+    setInterval(() => {
+      this.setState({contador : this.state.contador +1})   
+    }, 3000);
+  }
+
+  render(){
+    const contador = 0
+    
+    return(
+      <div>
+        <ContadorNumero numero={this.state.contador} />
+      </div>
+    )
+  }
+}
+
+class ContadorNumero extends Component {
+  render(){
+    return <span>{this.props.numero}</span>
+    
+  }
+}
+
 function App() {
   return (
     <div className="App">
@@ -49,12 +79,12 @@ function App() {
         <Text 
         arrayOfNumbers={[2,3,10]}
         arrayOfObjects={{key : 'valor1', key2 : 'valor2'}}
-        title="segundo componente" 
+        title="segundo aacomponente" 
         buleano={true}
         number={3+4} 
         multiplicacion= {(number)=> number *100 }
         />
-
+        <Contador />
       </header>
     </div>
   );
